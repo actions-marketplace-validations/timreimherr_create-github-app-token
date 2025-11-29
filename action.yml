@@ -1,4 +1,4 @@
-name: "Tim's Create GitHub App Token"
+name: "Create GitHub App Token"
 description: "GitHub Action for creating a GitHub App installation access token"
 author: "Gregor Martynus and Parker Brown"
 branding:
@@ -15,7 +15,7 @@ inputs:
     description: "GitHub App owner (defaults to current repository owner)"
     required: false
   repositories:
-    description: "Repositories to install the GitHub App on (defaults to current repository)"
+    description: "Repositories to install the GitHub App on (defaults to current repository if owner is unset)"
     required: false
 outputs:
   token:

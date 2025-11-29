@@ -10,7 +10,7 @@ In order to use this action, you need to:
 2. [Store the App's ID in your repository environment variables](https://docs.github.com/actions/learn-github-actions/variables#defining-configuration-variables-for-multiple-workflows) (example: `APP_ID`)
 3. [Store the App's private key in your repository secrets](https://docs.github.com/actions/security-guides/encrypted-secrets?tool=webui#creating-encrypted-secrets-for-a-repository) (example: `PRIVATE_KEY`)
 
-### Create token for current repository
+### Create a token for the current repository
 
 ```yaml
 on: [issues]
@@ -57,7 +57,7 @@ jobs:
           github_token: ${{ steps.app-token.outputs.token }}
 ```
 
-### Create token for all repositories in current owner's installation
+### Create a token for all repositories in the current owner's installation
 
 ```yaml
 on: [workflow_dispatch]
@@ -79,7 +79,7 @@ jobs:
           body: "Hello, World!"
 ```
 
-### Create a token for selected repositories in current owner's installation
+### Create a token for multiple repositories in the current owner's installation
 
 ```yaml
 on: [issues]
@@ -102,7 +102,7 @@ jobs:
           body: "Hello, World!"
 ```
 
-### Create token for all repositories in another owner's installation
+### Create a token for all repositories in another owner's installation
 
 ```yaml
 on: [issues]
@@ -140,7 +140,10 @@ jobs:
 
 ### `repositories`
 
-**Optional:** Comma-separated list of repositories to grant access to. If 'owner' is set and 'repositories' is empty then the access will be scoped to all repositories in the current repository owner's installation. If 'owner' and 'repositories' are empty then the access will be scoped to the current repository.
+**Optional:** Comma-separated list of repositories to grant access to.
+
+> [!NOTE]
+> If `owner` is set and `repositories` is empty, access will be scoped to all repositories in the provided repository owner's installation. If `owner` and `repositories` are empty, access will be scoped to only the current repository.
 
 ## Outputs
 
@@ -152,7 +155,7 @@ GitHub App installation access token.
 
 The action creates an installation access token using [the `POST /app/installations/{installation_id}/access_tokens` endpoint](https://docs.github.com/rest/apps/apps?apiVersion=2022-11-28#create-an-installation-access-token-for-an-app). By default,
 
-1. The token is scoped to the current repository or the repositories given.
+1. The token is scoped to the current repository or `repositories` if set.
 2. The token inherits all the installation's permissions.
 3. The token is set as output `token` which can be used in subsequent steps.
 4. The token is revoked in the `post` step of the action, which means it cannot be passed to another job.
