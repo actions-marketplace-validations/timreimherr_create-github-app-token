@@ -15,11 +15,11 @@
     "@octokit/request": "^8.1.2"
   },
   "devDependencies": {
-    "ava": "^5.3.1",
-    "dotenv": "^16.3.1",
-    "esbuild": "^0.19.4",
-    "execa": "^8.0.1",
-    "undici": "^5.25.2"
+    "ava": "^7.0.0",
+    "dotenv": "^17.4.0",
+    "esbuild": "^0.27.4",
+    "execa": "^9.6.1",
+    "undici": "^7.24.7"
   },
   "release": {
     "branches": [
